@@ -39,27 +39,24 @@ The pipeline includes running MrBayes for phylogenetic analysis using containeri
 
 ## Installation
 
-### Java
+### **Java**
 
 Ensure Java 17 or later is installed:
 
-```bash
+```
 java -version
+```
 
 
 If not installed, on Ubuntu:
 
 ```
 sudo apt update
-```
-
-
-```
 sudo apt install openjdk-17-jdk
 ```
 
 
-Nextflow
+### **Nextflow**
 
 
 Install Nextflow via official installer script:
@@ -82,7 +79,7 @@ nextflow -version
 ```
 
 
-Apptainer
+### **Apptainer**
 
 Apptainer replaces Singularity with active support and fixes.
 
@@ -140,7 +137,8 @@ apptainer exec docker://alpine echo "Hello Apptainer"
 ```
 
 
-Configuration
+### **Configuration**
+
 Configure Nextflow to enable Apptainer container support by editing nextflow.config:
 
 
@@ -174,6 +172,7 @@ apptainer pull ~/.singularity/images/mrbayes_3.2.7.sif docker://quay.io/bioconta
 
 
 Running the Pipeline
+
 Run your pipeline with Nextflow:
 
 
@@ -187,13 +186,5 @@ Or specify the container image manually if needed:
 ```
 nextflow run main.nf -with-singularity $HOME/.singularity/images/mrbayes_3.2.7.sif
 ```
-
-Pipeline Structure
-
-Input files: *_alignment.nex, parameter files starting with zzz*
-
-Main process: MrBayes runs with provided input and parameters inside Apptainer container
-
-Output: Results published to the results directory in the working folder
 
 
